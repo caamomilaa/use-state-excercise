@@ -1,0 +1,56 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.filters{
+    display: flex ;
+    align-items: center;
+    gap: 16px;
+}
+.active{
+    display: flex;
+}
+
+.cardcontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.card{
+    display: flex;
+    padding: 8px;
+    background-color: pink;
+    border-radius: 8px;
+    width: 425px;
+   justify-content: space-between;
+}
+.img{
+    width: 50px;
+    border-radius: 50%;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.textbold{
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+.text{
+    font-size: 14px;
+    margin: 0;
+}
+.details{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
