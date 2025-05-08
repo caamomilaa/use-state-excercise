@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 import { USERS } from '../constants/users';
 import styles from './users-list.module.css';
 
-const usersCopy = [...USERS];
+// const usersCopy = [...USERS];
 const UsersList = () => {
 	return (
 		<div className={styles.container}>
@@ -21,7 +21,7 @@ const UsersList = () => {
 				</div>
 			</div>
 			<article className={styles.cardcontainer}>
-				{usersCopy.map(user => (
+				{usersToRender.map(user => (
 					<div key={v4()} className={styles.card}>
 						<div className={styles.profile}>
 							<img className={styles.img} src={user.profileImage} alt='' />
@@ -43,14 +43,7 @@ const UsersList = () => {
 };
 
 const filterStatus = () => {
-	let usersToRender = usersCopy;
-
-	usersToRender.filter(user => {
-		if (user.active) {
-			usersToRender = user.active;
-			console.log('ta bien');
-		}
-	});
+	const usersToRender = USERS.filter(user => user.active);
 
 	// if (usersToRender.active) {
 	// 	usersToRender.filter(user => user.active);
