@@ -2,6 +2,7 @@ import { v4 } from 'uuid';
 import { USERS } from '../constants/users';
 import styles from './users-list.module.css';
 
+const usersCopy = [...USERS];
 const UsersList = () => {
 	return (
 		<div className={styles.container}>
@@ -11,7 +12,7 @@ const UsersList = () => {
 					<input className={styles.searchbar} type='text' />
 					<div className={styles.active}>
 						<p>Solo activos</p>
-						<input type='checkbox' />
+						<input onClick={filterStatus} type='checkbox' />
 					</div>
 					<select className={styles.dropdown}>
 						<option value='default'>Por Defecto</option>
@@ -20,7 +21,7 @@ const UsersList = () => {
 				</div>
 			</div>
 			<article className={styles.cardcontainer}>
-				{USERS.map(user => (
+				{usersCopy.map(user => (
 					<div key={v4()} className={styles.card}>
 						<div className={styles.profile}>
 							<img className={styles.img} src={user.profileImage} alt='' />
@@ -30,7 +31,7 @@ const UsersList = () => {
 							</div>
 						</div>
 						<div className={styles.details}>
-							<span>Activo</span>
+							<span>{user.active ? 'Activo' : 'Inactivo'}</span>
 							{/* hay que cambiar la palabra activo y su color, confomre este activo o no */}
 							<button>Ver detalles</button>
 						</div>
@@ -39,6 +40,24 @@ const UsersList = () => {
 			</article>
 		</div>
 	);
+};
+
+const filterStatus = () => {
+	let usersToRender = usersCopy;
+
+	usersToRender.filter(user => {
+		if (user.active) {
+			usersToRender = user.active;
+			console.log('ta bien');
+		}
+	});
+
+	// if (usersToRender.active) {
+	// 	usersToRender.filter(user => user.active);
+	// 	console.log('activo');
+	// } else {
+	// 	usersToRender.filter(user => !user.active);
+	// }
 };
 
 export default UsersList;
